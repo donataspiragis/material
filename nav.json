@@ -1,0 +1,24 @@
+{
+    "nav":[
+        {
+            "name":"Find Pomah"
+        },
+        {
+            "name":"Community"
+        },
+        {
+            "name":"Blog"
+        },
+        {
+            "name":"About Pomah"
+        }
+        
+    ],
+    "navright":[
+        {
+            "name":"Login"
+        },
+        {
+            "name":"Register"
+        }]
+}
