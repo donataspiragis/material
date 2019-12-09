@@ -13,10 +13,10 @@ xhttp.onreadystatechange = function() {
         for(let i =0; i < navitems.length; i++) {
             output += `
             <li class="nav-item">
-            <a class="nav-link" href="#`+ navitems[i].name +`" onclick="load('`+ navitems[i].name + `'); return false;">` + navitems[i].name + `</a>
+                <a class="nav-link" id="`+ navitems[i].name.replace(/\s/g, "") +`" href="#`+ navitems[i].name +`" onclick="load('`+ navitems[i].name + `');addclass(this); return false;">` + navitems[i].name + `</a>
             </li>
             `;
-        }
+        }   
         for(let i =0; i < navrightitem.length; i++) {
             outputright += '<li class="nav-item"><a class="nav-link" href="">' + navrightitem[i].name + '</a></li>';
             if(i = 1) {
@@ -32,7 +32,7 @@ xhttp.onreadystatechange = function() {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav"> 
+                <ul class="navbar-nav navbar-left"> 
                     ${output}
                 </ul>
                 <ul class="navbar-nav ml-auto nav-flex-icons">
@@ -170,10 +170,10 @@ let mainpage  = `
 `;
 contentDiv.innerHTML = mainpage;
 
-//CONTENT LOADER
+//CONTENT LOADER - to load content of current page
 function load(page) {
 
-    if(page == "blog" || page == "Blog") {
+if(page == "blog" || page == "Blog") {
 let communityDiv = document.querySelector(".addcontent");
 communityDiv.innerHTML = `
 <div class="row no-mg blog-list">
@@ -221,6 +221,7 @@ communityDiv.innerHTML = `
 if(page == "Find Pomah" || page == "Find Pomah") {
     let contentDiv = document.querySelector(".addcontent");
     contentDiv.innerHTML = mainpage;
+
 };
 
 if(page == "community" || page == "Community") {
@@ -277,4 +278,20 @@ function signfunc(){
     logform.classList.add("form-display-none");
     signform.classList.remove("form-display-none");
     signform.classList.add("form-display");
+}
+
+window.onload = function() {
+    var x = document.querySelector('.navbar-left').firstElementChild;
+x.classList.add("active-btn");
+  };
+
+function addclass(anchorLink){
+    var allLi = document.querySelectorAll(".nav-item");
+    [].forEach.call(allLi, function(el) {
+        el.classList.remove("active-btn");
+    });
+    pridejimas(anchorLink); 
+}
+function pridejimas(anchorLink){
+    anchorLink.parentNode.classList.add("active-btn");
 }
